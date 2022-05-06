@@ -54,3 +54,6 @@ df_project_coordinators = df_project_coordinators.sort_values(by=['shortName'], 
 
 st.subheader("Project Coordinators in "+country_name)
 st.write(df_project_coordinators)
+
+csv_project_coordinators = df_project_coordinators.to_csv()
+st.download_button(label="Download the CSV here", data=csv_project_coordinators)
