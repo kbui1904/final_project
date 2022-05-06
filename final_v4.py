@@ -2,6 +2,10 @@
 import pandas as pd
 import sqlite3
 import streamlit as st
+from PIL import image
+
+image = Image.open("top_header.png")
+st.image(image)
 
 st.header("Partner Search")
 st.write("Final project by Kiet Bui and Jack Katene")
