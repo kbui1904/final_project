@@ -32,11 +32,14 @@ INNER JOIN projects
 ON participants.projectID = projects.projectID''', con)
 
 df_filtered = df_participants[df_participants["country"] == country_selected]
-
 df_grants_per_partner = df_filtered.groupby(['country', 'shortName', 'name', 'activityType', 'organizationURL'], as_index=False).agg({'ecContribution': ['count', 'sum']})
 df_grants_per_partner = df_grants_per_partner.sort_values([("ecContribution", "sum")], ascending=False)
+
 st.subheader("Grants per partner in "+country_name)
 st.write(df_grants_per_partner)
+
+csv_grants_per_partner = df_grants_per_partner.to_csv('Grants_per_partner.csv')
+st.down_button(label="Download the CSV here")
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
 
@@ -48,5 +51,6 @@ WHERE role = 'coordinator'
 
 df_project_coordinators = df_project_coordinators[df_project_coordinators["country"] == country_selected]
 df_project_coordinators = df_project_coordinators.sort_values(by=['shortName'], ascending=True)
+
 st.subheader("Project Coordinators in "+country_name)
 st.write(df_project_coordinators)
