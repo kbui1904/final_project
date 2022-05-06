@@ -11,8 +11,6 @@ con = sqlite3.connect('ecsel_database.db')
 df_countries = pd.read_sql('''SELECT Country, Acronym
 FROM countries''', con)
 
-'''df_countries'''
-
 #FR-2.14 + FR-2.15: input country acronym and validate selection
 
 '''country_selected = str(input("Please select your desired country: "))
@@ -21,8 +19,8 @@ while country_selected not in df_countries.loc[:,'Acronym'].tolist():
     country_selected = str(input("Please select your desired country: "))
 '''
     
-country_selection = st.selectbox('Please choose the country acronym:', df_countries.loc[:,'Acronym'].tolist())
-st.write(country_selection)
+country_selected = st.selectbox('Please choose the country acronym:', df_countries.loc[:,'Acronym'].tolist())
+
 
 #FR-2.16: Connect to the database and create grants_per_participants dataframe
 #FR-2.17: Display the dataframe
@@ -37,7 +35,7 @@ df_filtered = df_participants[df_participants["country"] == country_selected]
 
 df_grants_per_partner = df_filtered.groupby(['country', 'shortName', 'name', 'activityType', 'organizationURL'], as_index=False).agg({'ecContribution': ['count', 'sum']})
 df_grants_per_partner = df_grants_per_partner.sort_values([("ecContribution", "sum")], ascending=False)
-'''df_grants_per_partner'''
+st.write(df_grants_per_partner)
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
 
