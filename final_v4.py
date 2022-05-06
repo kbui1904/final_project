@@ -20,7 +20,7 @@ FROM countries''', con)
 
 country_selected = st.selectbox('Please choose the country acronym:', df_countries.loc[:,'Acronym'].tolist())
 country_name = df_countries.loc[df_countries['Acronym']==country_selected, ["Country"]]
-st.write(country_name)
+st.write(country_name.to_string)
 
 #FR-2.16: Connect to the database and create grants_per_participants dataframe
 #FR-2.17: Display the dataframe
