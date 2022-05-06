@@ -2,9 +2,9 @@
 import pandas as pd
 import sqlite3
 import streamlit as st
-from PIL import image
+from PIL import Image
 
-image = Image.open("top_header.png")
+image = Image.open("top_banner.png")
 st.image(image)
 
 st.header("Partner Search")
