@@ -39,7 +39,7 @@ st.subheader("Grants per partner in "+country_name)
 st.write(df_grants_per_partner)
 
 csv_grants_per_partner = df_grants_per_partner.to_csv()
-st.download_button(label="Download the CSV here", data=csv_grants_per_partner)
+st.download_button(label="Download the CSV here", data=csv_grants_per_partner, file_name='Grants_per_partner.csv', mime='text/csv')
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
 
@@ -56,4 +56,4 @@ st.subheader("Project Coordinators in "+country_name)
 st.write(df_project_coordinators)
 
 csv_project_coordinators = df_project_coordinators.to_csv()
-st.download_button(label="Download the CSV here", data=csv_project_coordinators)
+st.download_button(label="Download the CSV here", data=csv_project_coordinators, file_name='Project_coordinators.csv', mime='text/csv')
