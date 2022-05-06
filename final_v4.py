@@ -3,7 +3,8 @@ import pandas as pd
 import sqlite3
 import streamlit as st
 
-st.header("Final project")
+st.header("Partner Search")
+st.write("Final project by Kiet Bui and Jack Katene")
 
 #FR-2.13: Connect to the database and extract list of countries in a dataframe
 
@@ -13,12 +14,6 @@ FROM countries''', con)
 
 #FR-2.14 + FR-2.15: input country acronym and validate selection
 
-'''country_selected = str(input("Please select your desired country: "))
-while country_selected not in df_countries.loc[:,'Acronym'].tolist():
-    print("Invalid country")
-    country_selected = str(input("Please select your desired country: "))
-'''
-    
 country_selected = st.selectbox('Please choose the country acronym:', df_countries.loc[:,'Acronym'].tolist())
 
 
@@ -47,4 +42,4 @@ WHERE role = 'coordinator'
 
 df_project_coordinators = df_project_coordinators[df_project_coordinators["country"] == country_selected]
 df_project_coordinators = df_project_coordinators.sort_values(by=['shortName'], ascending=True)
-'''df_project_coordinators'''
+st.write(df_project_coordinators)
