@@ -38,8 +38,8 @@ df_grants_per_partner = df_grants_per_partner.sort_values([("ecContribution", "s
 st.subheader("Grants per partner in "+country_name)
 st.write(df_grants_per_partner)
 
-csv_grants_per_partner = df_grants_per_partner.to_csv('Grants_per_partner.csv')
-st.down_button(label="Download the CSV here")
+csv_grants_per_partner = df_grants_per_partner.to_csv()
+st.download_button(label="Download the CSV here", data=csv_grants_per_partner)
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
 
