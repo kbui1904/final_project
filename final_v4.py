@@ -19,8 +19,9 @@ FROM countries''', con)
 #FR-2.14 + FR-2.15: input country acronym and validate selection
 
 country_selected = st.selectbox('Please choose the country acronym:', df_countries.loc[:,'Acronym'].tolist())
-country_name = df_countries.loc[df_countries['Acronym']==country_selected, ["Country"]]
+country_name = df_countries[df_countries.Acronym==country_selected].Country.item()
 st.write(country_name)
+st.write("You selected: "+country_selected)
 
 #FR-2.16: Connect to the database and create grants_per_participants dataframe
 #FR-2.17: Display the dataframe
