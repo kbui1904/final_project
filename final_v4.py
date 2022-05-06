@@ -34,6 +34,7 @@ df_filtered = df_participants[df_participants["country"] == country_selected]
 
 df_grants_per_partner = df_filtered.groupby(['country', 'shortName', 'name', 'activityType', 'organizationURL'], as_index=False).agg({'ecContribution': ['count', 'sum']})
 df_grants_per_partner = df_grants_per_partner.sort_values([("ecContribution", "sum")], ascending=False)
+st.header("Grants per partner")
 st.write(df_grants_per_partner)
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
