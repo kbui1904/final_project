@@ -7,7 +7,7 @@ from PIL import Image
 image = Image.open("top_banner.png")
 st.image(image)
 
-st.header("Partner Search")
+st.title("Partner Search")
 st.write("Final project by Kiet Bui and Jack Katene")
 
 #FR-2.13: Connect to the database and extract list of countries in a dataframe
@@ -34,7 +34,7 @@ df_filtered = df_participants[df_participants["country"] == country_selected]
 
 df_grants_per_partner = df_filtered.groupby(['country', 'shortName', 'name', 'activityType', 'organizationURL'], as_index=False).agg({'ecContribution': ['count', 'sum']})
 df_grants_per_partner = df_grants_per_partner.sort_values([("ecContribution", "sum")], ascending=False)
-st.header("Grants per partner")
+st.subheader("Grants per partner in "+country_selected)
 st.write(df_grants_per_partner)
 
 #FR-2.18: Generate Dataframe with project coordinators from the selected country
@@ -47,4 +47,5 @@ WHERE role = 'coordinator'
 
 df_project_coordinators = df_project_coordinators[df_project_coordinators["country"] == country_selected]
 df_project_coordinators = df_project_coordinators.sort_values(by=['shortName'], ascending=True)
+st.subheader("Project Coordinators in "+country_selected)
 st.write(df_project_coordinators)
